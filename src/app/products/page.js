@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import { Card } from "@/components/Card";
 
-const page = () => {
-  return (
-    <div>
-      Products
-    </div>
-  )
+export async function getData() {
+  const res = await fetch("https://fakestoreapi.com/products");
+  return res.json();
 }
 
-export default page
+export default async function Page() {
+  const data = await getData();
+
+  return (
+    <section className="flex justify-evenly items-center flex-wrap gap-6 p-10">
+      {data.map((product, id) => (
+        <Card data={product} key={id} />
+      ))}
+    </section>
+  );
+}
