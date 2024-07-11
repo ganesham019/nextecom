@@ -1,5 +1,5 @@
 import React from "react";
 
 export const MainContent = ({ children }) => {
-  return <main>{children}</main>;
+  return <main className="min-h-screen">{children}</main>;
 };
